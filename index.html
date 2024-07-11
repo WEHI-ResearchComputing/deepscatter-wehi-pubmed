@@ -9,7 +9,7 @@
     padding: 5px;
   }
   #color-legend {
-    right: 0;
+    left: 0;
     flex-direction: column;
     align-items: right;
     justify-content: right;
@@ -32,7 +32,7 @@
 
 <body>
   <h1>WEHI & Pubmed Landscape</h1>
-  <div id="datestring"></div>
+  <!-- <div id="datestring"></div> -->
   <!-- <input id="date" title="date selector" type="range" min="-1800" max="1500" /> -->
   <div id="deepscatter">
     <div>
@@ -74,7 +74,7 @@
     alpha: 100000, // Target saturation for the full page.
     zoom_balance: 0.35, // Rate at which points increase size. https://observablehq.com/@bmschmidt/zoom-strategies-for-huge-scatterplots-with-three-js
     //point_size: 10, // Default point size before application of size scaling
-    point_size: 2,
+    point_size: 1,
     background_color: '#FFFFFF',
     zoom_align: 'right',
     click_function:
@@ -150,35 +150,35 @@
         'All'
       ]);
     redo_scale();
-    buttons
-      .enter()
-      .append('div')
-      .style('display', 'flex')
-      .style('flex', 'row')
-      .append('button')
-      .text((d) => d)
-      .on('click', function (d) {
-        const button = select(this);
-        const field = button.text();
-        if (field === "WEHI with All") {
-            scatterplot
-              .plotAPI({
-                alpha: 100000,
-                max_points: 10000000,
-                point_size: 5,
-                encoding: {
-                  background_options: {
-                    size: 0.1,
-                  },
-                  filter: {
-                    field: 'WEHI-affiliated',
-                    lambda: d => d === 'True'
-                  }
-                },
-              })
-        } else if (field === "All") {
-            scatterplot.plotAPI(prefs)
-        }
-      });
+    // buttons
+    //   .enter()
+    //   .append('div')
+    //   .style('display', 'flex')
+    //   .style('flex', 'row')
+    //   .append('button')
+    //   .text((d) => d)
+    //   .on('click', function (d) {
+    //     const button = select(this);
+    //     const field = button.text();
+    //     if (field === "WEHI with All") {
+    //         scatterplot
+    //           .plotAPI({
+    //             alpha: 100000,
+    //             max_points: 10000000,
+    //             point_size: 5,
+    //             encoding: {
+    //               background_options: {
+    //                 size: 0.1,
+    //               },
+    //               filter: {
+    //                 field: 'WEHI-affiliated',
+    //                 lambda: d => d === 'True'
+    //               }
+    //             },
+    //           })
+    //     } else if (field === "All") {
+    //         scatterplot.plotAPI(prefs)
+    //     }
+    //   });
   });
 </script>
